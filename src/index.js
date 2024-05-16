@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-export const cloudinary_upload = async (
+const cloudinary_upload = async (
   cloud_name_cloudinary,
   api_key_name_cloudinary,
   api_secret_name_cloudinary
@@ -21,4 +21,4 @@ const upload_up_archive = async (archivo, opciones) => {
   }
 };
 
-export default { upload_up_archive };
+module.exports = { upload_up_archive, cloudinary_upload };
