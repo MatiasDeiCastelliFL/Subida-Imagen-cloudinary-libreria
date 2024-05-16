@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-const cloudinary_upload = async (
+export const cloudinary_upload = async (
   cloud_name_cloudinary,
   api_key_name_cloudinary,
   api_secret_name_cloudinary
