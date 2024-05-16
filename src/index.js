@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-const cloudinary_upload = (
+const cloudinary_upload = async (
   cloud_name_cloudinary,
   api_key_name_cloudinary,
   api_secret_name_cloudinary
@@ -12,17 +12,8 @@ const cloudinary_upload = (
   });
 };
 
-const upload_up_archive = async (
-  function_cloudinary_value,
-  archivo,
-  opciones
-) => {
+const upload_up_archive = async (archivo, opciones) => {
   try {
-    cloudinary_upload(
-      function_cloudinary_value.cloud_name,
-      function_cloudinary_value.api_key_name_cloudinary,
-      function_cloudinary_value.api_secret_name_cloudinary
-    );
     const resultado = await cloudinary.uploader.upload(archivo, opciones);
     return resultado;
   } catch (error) {
