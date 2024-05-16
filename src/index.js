@@ -1,4 +1,4 @@
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
 
 const cloudinary_upload = (
   cloud_name_cloudinary,
@@ -30,4 +30,4 @@ const upload_up_archive = async (
   }
 };
 
-module.exports = upload_up_archive;
+export default { upload_up_archive };
