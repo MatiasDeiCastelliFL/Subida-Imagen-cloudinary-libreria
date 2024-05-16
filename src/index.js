@@ -16,16 +16,10 @@ const cloudinary_upload = async (
   }
 };
 
-const upload_up_archive = async (
-  cloud_name,
-  api_key,
-  api_secret,
-  archivo,
-  opciones
-) => {
+const upload_up_archive = async (cloud_name, api_key, api_secret, archivo) => {
   try {
     await cloudinary_upload(cloud_name, api_key, api_secret);
-    const resultado = await cloudinary.uploader.upload(archivo, opciones);
+    const resultado = await cloudinary.uploader.upload(archivo);
     return resultado;
   } catch (error) {
     throw new Error("Error al subir el archivo a Cloudinary");
