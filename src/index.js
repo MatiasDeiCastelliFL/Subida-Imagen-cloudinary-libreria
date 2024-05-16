@@ -12,7 +12,11 @@ const cloudinary_upload = (
   });
 };
 
-upload_up_archive = async (function_cloudinary_value, archivo, opciones) => {
+const upload_up_archive = async (
+  function_cloudinary_value,
+  archivo,
+  opciones
+) => {
   try {
     cloudinary_upload(
       function_cloudinary_value.cloud_name,
