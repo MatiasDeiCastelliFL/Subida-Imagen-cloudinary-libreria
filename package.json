@@ -12,7 +12,7 @@
   "main": "dist-node/index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/MatiasDeiCastelliFL/Subida-Imagen-cloudinary-libreria.git"
   },
   "scripts": {
     "build": "babel src -d dist-node",
