@@ -1,51 +1,48 @@
+
 const cloudinary =require("cloudinary").v2;
 
-const cloudinary_upload =(
+constconfigureCloudinary=(cloud_name, api_key, api_secret)=>{
 
-  cloud_name_cloudinary,
+  cloudinary.config({
 
-  api_key_name_cloudinary,
+    cloud_name: cloud_name,
 
-  api_secret_name_cloudinary
+    api_key: api_key,
 
-)=>{
-
-  return cloudinary.config({
-
-    cloud_name: cloud_name_cloudinary,
-
-    api_key: api_key_name_cloudinary,
-
-    api_secret: api_secret_name_cloudinary,
+    api_secret: api_secret,
 
   });
 
 };
 
-upload_up_archive=async(function_cloudinary_value, archivo, opciones)=>{
+constupload_up_archive=async(
+
+  cloud_name,
+
+  api_key,
+
+  api_secret,
+
+  archivo,
+
+  config ={}
+
+)=>{
+
+  configureCloudinary(cloud_name, api_key, api_secret);
 
   try{
 
-    cloudinary_upload(
+    const ImagenSubida =await cloudinary.uploader.upload(archivo.path, config);
 
-    function_cloudinary_value.cloud_name,
-
-    function_cloudinary_value.api_key_name_cloudinary,
-
-    function_cloudinary_value.api_secret_name_cloudinary
-
-    );
-
-    const resultado =await cloudinary.uploader.upload(archivo, opciones);
-
-    return resultado;
+    return ImagenSubida;
 
   }catch(error){
 
-    thrownewError("Error al subir el archivo a Cloudinary");
+    thrownewError(error);
 
   }
 
 };
 
-module.exports= upload_up_archive;
+module.exports={ upload_up_archive };
