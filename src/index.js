@@ -1,4 +1,3 @@
-const express = require("express");
 const cloudinary = require("cloudinary").v2;
 const configureCloudinary = (cloud_name, api_key, api_secret) => {
   cloudinary.config({
