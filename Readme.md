@@ -1,45 +1,38 @@
 
+```
+# <Center>Cloudinary<Center>
+****************************
+
+## Requisito:
+
+1. Tener cuenta en cloudinary
+2. Setear las variable a enviar a la funcion de subir imagen
+3. Enviar las variables ("cloud_name", "api_key", "api_secret","path del archivo", "configuración adicional mandarlo en forma de objecto" ) a la función upload_up_archive 
+
 const cloudinary = require("cloudinary").v2;
-
-/**
-
-* Configura Cloudinary con las credenciales proporcionadas.
-* @param {string} cloud_name - El nombre de la nube de Cloudinary.
-* @param {string} api_key - La clave API de Cloudinary.
-* @param {string} api_secret - El secreto API de Cloudinary.
-  */
-  constconfigureCloudinary = (cloud_name, api_key, api_secret) => {
+const configureCloudinary = (cloud_name, api_key, api_secret) => {
   cloudinary.config({
-  cloud_name: cloud_name,
-  api_key: api_key,
-  api_secret: api_secret,
+    cloud_name: cloud_name,
+    api_key: api_key,
+    api_secret: api_secret,
   });
-  };
+};
 
-/**
 
-* Sube un archivo a Cloudinary.
-* @param {string} cloud_name - El nombre de la nube de Cloudinary.
-* @param {string} api_key - La clave API de Cloudinary.
-* @param {string} api_secret - El secreto API de Cloudinary.
-* @param {string} archivo - La ruta del archivo a subir.
-* @param {Object} config - Opciones de configuración adicionales (opcional).
-* @returns {Promise`<Object>`} Una promesa que resuelve con el resultado de la carga.
-  */
-  constupload_up_archive = async (
+const upload_up_archive = async (
   cloud_name,
   api_key,
   api_secret,
   archivo,
   config = {}
-  ) => {
+) => {
   configureCloudinary(cloud_name, api_key, api_secret);
   try {
-  constImagenSubida = await cloudinary.uploader.upload(archivo.path, config);
-  returnImagenSubida;
+    const ImagenSubida = await cloudinary.uploader.upload(archivo.path, config);
+    return ImagenSubida;
   } catch (error) {
-  thrownewError(error);
+    throw new Error(error);
   }
-  };
-
+};
 module.exports = { upload_up_archive };
+```
