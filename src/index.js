@@ -1,29 +1,26 @@
+const express = require("express");
 const cloudinary = require("cloudinary").v2;
+const configureCloudinary = (cloud_name, api_key, api_secret) => {
+  cloudinary.config({
+    cloud_name: cloud_name,
+    api_key: api_key,
+    api_secret: api_secret,
+  });
+};
 
-const cloudinary_upload = async (
-  cloud_name_cloudinary,
-  api_key_name_cloudinary,
-  api_secret_name_cloudinary
+const upload_up_archive = async (
+  cloud_name,
+  api_key,
+  api_secret,
+  archivo,
+  config = {}
 ) => {
+  configureCloudinary(cloud_name, api_key, api_secret);
   try {
-    await cloudinary.config({
-      cloud_name: cloud_name_cloudinary,
-      api_key: api_key_name_cloudinary,
-      api_secret: api_secret_name_cloudinary,
-    });
+    const ImagenSubida = await cloudinary.uploader.upload(archivo.path, config);
+    return ImagenSubida;
   } catch (error) {
-    throw new Error("Error configuring Cloudinary");
+    throw new Error(error);
   }
 };
-
-const upload_up_archive = async (cloud_name, api_key, api_secret, archivo) => {
-  try {
-    await cloudinary_upload(cloud_name, api_key, api_secret);
-    const resultado = await cloudinary.uploader.upload(archivo);
-    return resultado;
-  } catch (error) {
-    throw new Error("Error al subir el archivo a Cloudinary");
-  }
-};
-
 module.exports = { upload_up_archive };
