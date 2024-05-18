@@ -1,6 +1,5 @@
 ```
-# <Center>Cloudinary<Center>
-****************************
+
 
 ## Requisito:
 
@@ -35,5 +34,3 @@ const upload_up_archive = async (
 };
 module.exports = { upload_up_archive };
 ```
-
-ry
