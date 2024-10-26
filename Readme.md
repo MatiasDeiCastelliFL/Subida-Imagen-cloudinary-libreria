@@ -32,5 +32,26 @@ const upload_up_archive = async (
     throw new Error(error);
   }
 };
-module.exports = { upload_up_archive };
+
+const upload_up_archive_multiple = async (
+  cloud_name,
+  api_key,
+  api_secret,
+  imagen_multiple,
+  config = {}
+) => {
+  configureCloudinary(cloud_name, api_key, api_secret);
+  try {
+    const ImagenesSubidas = await Promise.all(
+      imagen_multiple.map((imagen) =>
+        cloudinary.uploader.upload(imagen.path, config)
+      )
+    );
+    return ImagenesSubidas;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+module.exports = { upload_up_archive, upload_up_archive_multiple};
 ```
